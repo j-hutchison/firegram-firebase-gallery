@@ -1,0 +1,7 @@
+.banner h1 {
+	color: var(--primary);
+	font-size: 1.8rem;
+	letter-spacing: 2px;
+	font-weight: normal;
+	text-align: left;
+}

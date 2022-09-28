@@ -1,0 +1,38 @@
+.title {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	margin-top: 6rem;
+}
+
+.title h2,
+.title p {
+	text-align: center;
+}
+.title h2 {
+	font-size: 2.6rem;
+}
+.title p {
+	font-size: 1.2rem;
+}
+.title button {
+	display: inline-block;
+
+	width: 3rem;
+	height: 3rem;
+	margin: 0 auto;
+
+	border-radius: 50%;
+	color: var(--primary);
+	background-color: transparent;
+	border: 1px solid var(--primary);
+}
+
+.title button:hover,
+.title button:active {
+	color: #fff;
+	background-color: var(--primary);
+	cursor: pointer;
+
+	transition: all 0.4s;
+}

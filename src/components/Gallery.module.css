@@ -1,0 +1,22 @@
+.firegram-gallery {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 3rem;
+
+	margin-top: 8rem;
+}
+
+.gallery-image {
+	width: 100%;
+	height: 280px;
+	object-fit: cover;
+	opacity: 0.8;
+	border-radius: 2px;
+}
+
+.gallery-image:hover,
+.gallery-image:active {
+	opacity: 1;
+	transition: opacity 0.4s;
+	cursor: pointer;
+}
