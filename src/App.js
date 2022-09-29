@@ -65,8 +65,8 @@ function App() {
 		<div className="App">
 			<Banner />
 			<main>
-				<Title />
-				<Gallery imageURLs={imageURLs} storage={storage} />
+				<Title firestoreDatabase={fireStoredb} storage={storage} />
+				<Gallery imageURLs={imageURLs} />
 			</main>
 		</div>
 	);

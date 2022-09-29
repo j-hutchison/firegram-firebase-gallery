@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
 import classes from "./Gallery.module.css";
 
-import { ref, listAll, getDownloadURL } from "firebase/storage";
-
 const Gallery = (props) => {
-	const [images, setImages] = useState([]);
-	const storageRef = ref(props.storage);
+	// const [images, setImages] = useState([]);
+	// const storageRef = ref(props.storage);
 
 	// useEffect(() => {
 	// 	listAll(storageRef)
