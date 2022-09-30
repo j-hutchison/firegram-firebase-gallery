@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import classes from "./UploadButton.module.css";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { collection, addDoc } from "firebase/firestore";
+import ProgressBar from "./ProgressBar";
 
 const UploadButton = ({ firestoreDb, storage }) => {
 	const [currentFile, setCurrentFile] = useState(null);
 	const [error, setError] = useState(null);
-
 	const fileTypes = ["image/jpeg", "image/png"];
 
 	const handleAddFileBtnClick = async (event) => {
@@ -23,25 +21,7 @@ const UploadButton = ({ firestoreDb, storage }) => {
 		console.log("fileObj is", fileObj);
 		event.target.value = null;
 
-		setCurrentFile(() => fileObj.name);
-		const downloadUrl = await uploadFileToFirebaseStorage(fileObj);
-		const newDocumentId = await addDoc(collection(firestoreDb, "images"), {
-			imageURL: downloadUrl,
-			timestamp: new Date().getTime(),
-		});
-
-		setCurrentFile(() => null);
-		setError(() => null);
-	};
-
-	const uploadFileToFirebaseStorage = async (file) => {
-		const storageRef = ref(storage, file.name);
-
-		const snapshot = await uploadBytes(storageRef, file);
-		const downloadUrl = await getDownloadURL(snapshot.ref);
-
-		console.log(downloadUrl);
-		return downloadUrl;
+		setCurrentFile(() => fileObj);
 	};
 
 	return (
@@ -60,8 +40,15 @@ const UploadButton = ({ firestoreDb, storage }) => {
 					+
 				</label>
 			</div>
+
 			<span className={classes["title-filename"]}>
-				{error ? error : currentFile}
+				{error ? error : currentFile?.name}
+				{currentFile && (
+					<ProgressBar
+						currentFile={currentFile}
+						setCurrentFile={setCurrentFile}
+					/>
+				)}
 			</span>
 		</>
 	);

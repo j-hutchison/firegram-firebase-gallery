@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getStorage, ref } from "firebase/storage";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, Timestamp } from "firebase/firestore";
 
 const firebaseConfig = {
 	apiKey: "AIzaSyCbRDUXRb5H0NJvVblWasDrI96z01cHRMI",
@@ -19,5 +19,7 @@ const fireStoredb = getFirestore(app);
 
 // Firebase storage used for uploading images and returning download URLs for displaying images
 const storage = getStorage(app);
+const timestamp = Timestamp;
+debugger;
 
-export { fireStoredb, storage };
+export { fireStoredb, storage, timestamp };
