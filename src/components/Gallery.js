@@ -23,16 +23,18 @@ const Gallery = (props) => {
 
 	return (
 		<div className={classes["firegram-gallery"]}>
-			{props.imageURLs.map((url, index) => {
-				return (
-					<img
-						key={index}
-						className={classes["gallery-image"]}
-						src={url}
-						alt="image"
-					/>
-				);
-			})}
+			{props.images
+				.sort((img1, img2) => img2.timestamp - img1.timestamp)
+				.map((img, index) => {
+					return (
+						<img
+							key={index}
+							className={classes["gallery-image"]}
+							src={img.imageURL}
+							alt="image"
+						/>
+					);
+				})}
 		</div>
 	);
 };
