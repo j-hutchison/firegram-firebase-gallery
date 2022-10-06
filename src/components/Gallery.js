@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import classes from "./Gallery.module.css";
+import { motion } from "framer-motion";
 
 const Gallery = (props) => {
 	// const [images, setImages] = useState([]);
@@ -23,18 +24,20 @@ const Gallery = (props) => {
 
 	return (
 		<div className={classes["firegram-gallery"]}>
-			{props.images
-				.sort((img1, img2) => img2.timestamp - img1.timestamp)
-				.map((img, index) => {
-					return (
-						<img
-							key={index}
-							className={classes["gallery-image"]}
-							src={img.imageURL}
-							alt="image"
-						/>
-					);
-				})}
+			{props.images.map((img, index) => {
+				return (
+					<motion.img
+						layout
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 0.8 }}
+						transition={{ delay: 1 }}
+						key={img.id}
+						className={classes["gallery-image"]}
+						src={img.imageURL}
+						alt="uploaded gallery picture"
+					/>
+				);
+			})}
 		</div>
 	);
 };
